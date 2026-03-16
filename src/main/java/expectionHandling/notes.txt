@@ -1,0 +1,132 @@
+------expectation---------
+-It is unexpected/abnormal situation that occured at runtime.
+
+-example ,ClassNotFoundExpection, fileNotFoundException,power outException,nullException
+
+----------------how to handle exception---
+-using try , catch, throw, throws , finally
+
+
+------Exception hierarchy--------
+
+                           java.lang.Object
+                                 |
+                                 v
+                           java.lang.Throwable
+                                /       \
+                               /         \
+                            Error      Exception
+                               |
+                          Runtime error      |
+                          (Unchecked error)  |
+                                -------- ------------------------------
+                                   |                        |
+                           Compile time Exception          Runtime Exception
+                             (Checked exception)          (unchecked exception)
+
+
+ ----------🔹 Difference Between Exception and Error----------
+
+
+                 Exception                                      Error
+---------------------------------------------------------------------------------------------------------------
+-expection occurs because of our programs                   -Error occurs because lack of system resources
+
+-Expection are recoverable i.e programmer                    - Error are not recoverable means programmer can handel their level
+can handle them using try-catch blocks
+
+-expection are two type , compile time exception,            -Error are only one type , runtime exception
+
+-Example , NullPointerException,IOException                 -OutOfMemmory error, stackOverflow error,verifyError
+classNotFound , fileNotFoundException
+-NoSuchMethodExpection
+-SQlExpection
+-RemoteExpection
+-InterruptedException
+
+
+----------RunTimeExpection------------------
+-ArithmeticExpection
+-ClassCastExpection
+-NullPointerExpection
+IndexOutOfBoundException
+IlligalArgumentexpection
+
+
+----------------compileTime  vs runTime expectation -----------------------
+Those expepction compille can be saay handle or declare expection is called compileTime exception
+-compiler check at compile time th0se expection called checked exception
+-Those exception compiler can not be checked at compile time it called runTime exception
+
+--------------------------------------------------------------------------------------------------------------
+       checked / compileTime expection                         |                            unchecked / runTime expection
+------------------------------------------------------------------------------------------------------------------------
+- checked exception check at compile time.                          - Unchecked exception checked by jvm at run time
+-it occurs at compile time                                           - it occurs at runTime
+- it handle by using try , catch or throws                           -  It is not mandatory
+-Example is ,ClassNotFound expection ,IOException, FileNotFoundException                     -NullPointerException, ArithmeticException,IndexOutOfBound
+
+
+-checkekd exception are exception , they handle at compile          -unchecked expection  are the expection that are not
+time .                                                                checked at compile time.
+-program gives compilation error if method throws                   - program compile fine beacuse the compiler is not able check expection
+a checked exception.
+-checked expection occurs  when the chances of failure              - unchecked expection occurs mostly due to programming mistake
+are to high
+
+
+---------------try catch---------------------------
+try{
+risky code
+}
+catch(ExpectioClassName ref.var.name){
+
+//handling code
+
+}
+
+--------------printStackTrace---------------
+e.printStackTrace() ,method return exception name , description,stack  trace
+-It print exception object.
+
+
+-------e.toString()--or --e---
+-It  return java.lang.ArithmaticExpection / by zero
+- when we have only print e then also print java.lang.ArithmaticExpection / by zero
+System.out.println(e);     //It also pront same like e.toString
+
+System.out.println(e.toString());   //Both print same
+System.out.println(e.getMessage()); //print description
+
+------try ---catch()------finally-----
+-we can not use multiple time finally block
+-we can use multiple catch block with one try block
+but we can only use single finally block with one try blocks
+
+-------jump statement--------
+-If we use jump statemnt in catch block like , break,continue then must be finally block run
+
+---------finally block not execute------
+-using of the System.exit(); method inside try block
+-fatal error happen , for eg, outOfMemmory error
+-if exception happen inside finally block then also finally block not run
+-death of thread , thread terminate in between
+-jvm crashesh
+
+try{
+//risky code, Eg. -Open file , read/write file
+                  - This open file must be close , if exception happened , this file close inside finally blocks
+
+}catch(){
+//handling code
+
+}finally{
+//cleanup code,closing purpose,log release eg - database connection close
+//close file
+}
+
+- If exception happen in try block , it goes inside catch block display exception
+and goes inside finally block , it execute
+
+- If exception is not happen in try blocks , it executes try block and finally block
+-finally block always run

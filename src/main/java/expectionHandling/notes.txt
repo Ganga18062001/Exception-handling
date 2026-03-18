@@ -104,7 +104,10 @@ System.out.println(e.getMessage()); //print description
 but we can only use single finally block with one try blocks
 
 -------jump statement--------
--If we use jump statemnt in catch block like , break,continue then must be finally block run
+-If we use jump statemnt in try block like , break,continue and return then must be finally block run.
+-we use break staement , it execute try block then finally
+-but when we use continue and return , finally execute before the continue abd return
+
 
 ---------finally block not execute------
 -using of the System.exit(); method inside try block
@@ -128,5 +131,34 @@ try{
 - If exception happen in try block , it goes inside catch block display exception
 and goes inside finally block , it execute
 
-- If exception is not happen in try blocks , it executes try block and finally block
+- If exception is not happen in try blocks , it does not executes try block and finally block
 -finally block always run
+
+-----------rules-----
+-one try block with we can use multiple catch block
+-but only one finally block we can use it
+
+------difference between final , finally ,finalize--------
+
+                final                        finally                                             finallize
+     --------------------------------------------------------------------------------------------------------------------------
+     - keyword                                block                                              method
+
+     -Restrict modification            -Expection handling                      -cleanUp before GC
+
+     -It is used with variable,        -It used with either try or              -It is used for cleanup resources also
+     class(can't inherite) and          try and catch                             it execute before garbage collection
+     method(can't override)                                                     -It is override method of object class
+
+                                                                               -protected void finalize() throws Throwable {
+                                                                                     // cleanup code
+                                                                                 }
+Syntax -
+
+         -final int age = 10;         -try{
+         -final void display(){           //risky code   }
+         //we can not be override      catch(){
+         }                                   //exception handle        }
+        -final class A{
+        //can't extend
+        }
